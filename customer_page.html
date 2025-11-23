@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Pemesanan Makanan</h2>
+
+<form method="POST">
+
+    <h3>Pilih Menu:</h3>
+    {% for item, price in pricelist.items() %}
+        <input type="checkbox" name="menu" value="{{ item }}">
+        {{ item }} - Rp {{ price }}<br>
+    {% endfor %}
+
+    <br>
+
+    Pilih Meja:
+    <select name="table">
+        <option value="Meja 1">Meja 1</option>
+        <option value="Meja 2">Meja 2</option>
+        <option value="Meja 3">Meja 3</option>
+    </select><br><br>
+
+    Metode Pembayaran:
+    <select name="payment">
+        <option value="Cash">Cash</option>
+        <option value="QRIS">QRIS</option>
+        <option value="Transfer">Transfer</option>
+    </select><br><br>
+
+    <button type="submit">Kirim Pesanan</button>
+</form>
+
+<hr>
+
+<h3>Status Pesanan:</h3>
+<p>Meja: {{ status.table }}</p>
+<p>Pesanan: {{ status.order }}</p>
+<p>Metode Pembayaran: {{ status.payment_method }}</p>
+<p>Status Pembayaran: {{ status.payment_status }}</p>
+
+<a href="/logout">Logout</a>
+
+</body>
+</html>
